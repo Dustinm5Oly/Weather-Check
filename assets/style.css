@@ -1,0 +1,7 @@
+.main {
+    border-style: solid;
+}
+
+#displayWeather {
+    display: none;
+}
