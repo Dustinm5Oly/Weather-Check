@@ -15,19 +15,19 @@
             <h1>Weather Dashboard</h1>
         </header>
     </main>
-        <section class="row col-3 container-fluid">
+        <div class="row col-3 container-fluid">
             <div class="col-12">
                 <h2>Search for a City:</h2>
                 <input class="display-center" type="text" placeholder="Enter City Name">
                 <button class="btn btn-secondary"><i class="bi bi-thermometer-sun"></i></button>
             </div>
-            <div class="row col-12 mt-3">
+            <div class="row col-12 mt-3 list-group">
                 <ul id="previouslySearched">
                     <!--cities previously searched display here-->
                 </ul>
             </div>
-        </section>
-        <section id="displayWeather" class="row col-9">
+        </div>
+        <div id="displayWeather" class="row col-9">
 
             <div class="row col-12 pb-3 mr-2 ml-2" id="selectedCity">
                 <!--display current city here!-->
@@ -40,7 +40,7 @@
             <div class="row pl-2" id="nextFiveDays">
                 <!--next 5 days of forecast display here-->
             </div>
-        </section>
+        </div>
         
     <script> src="./assets/script.js" </script>
 </body>
