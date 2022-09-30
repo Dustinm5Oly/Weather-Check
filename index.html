@@ -16,15 +16,15 @@
         </header>
     </main>
         <div class="row col-3 container-fluid">
-            <div class="col-12">
+            <div id="searchForm"class="col-12">
                 <h2>Search for a City:</h2>
-                <input class="display-center" type="text" placeholder="Enter City Name">
-                <button class="btn btn-secondary"><i class="bi bi-thermometer-sun"></i></button>
+                <input id="input-group" class="display-center" type="text" placeholder="Enter City Name">
+                <button id="search-city"class="btn btn-secondary"><i class="bi bi-thermometer-sun"></i></button>
             </div>
             <div class="row col-12 mt-3 list-group">
-                <ul id="previouslySearched">
+                <div id="previouslySearched">
                     <!--cities previously searched display here-->
-                </ul>
+                </div>
             </div>
         </div>
         <div id="displayWeather" class="row col-9">
@@ -41,7 +41,10 @@
                 <!--next 5 days of forecast display here-->
             </div>
         </div>
-        
-    <script> src="./assets/script.js" </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js" integrity="sha512-vyRAVI0IEm6LI/fVSv/Wq/d0KUfrg3hJq2Qz5FlfER69sf3ZHlOrsLriNm49FxnpUGmhx+TaJKwJ+ByTLKT+Yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js" integrity="sha512-yBpuflZmP5lwMzZ03hiCLzA94N0K2vgBtJgqQ2E1meJzmIBfjbb7k4Y23k2i2c/rIeSUGc7jojyIY5waK3ZxCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>  
+    <script src="./assets/script.js"></script> 
 </body>
 </html>
