@@ -13,17 +13,6 @@
         <header class="row col-12 justify-content-md-center navbar navbar-secondary bg-secondary text-white container-fluid">
             <h1>Weather Dashboard</h1>
         </header>
-        <!-- <div class="row col-3 container-fluid">
-            <div id="searchForm"class="col-12">
-                <h2>Search for a City:</h2>
-                <input id="input-group" class="display-center" type="text" placeholder="Enter City Name">
-                <button id="search-city"class="btn btn-secondary"><i class="bi bi-thermometer-sun"></i></button>
-            </div>
-            <div class="row col-12 mt-3 list-group">
-                <div id="previouslySearched">
-                </div>
-            </div>
-        </div> -->
         <div class="container-fluid" style="max-width: 1400px">
             <div class="row">
               <aside class="col-lg-3 pb-3">
@@ -37,7 +26,7 @@
                         class="form-input weather-search"
                         type="text"
                         id="search-input"
-                        placeholder="San Diego"
+                        placeholder="Scottsdale"
                         aria-labelledby="form-heading"
                         aria-controls="today forecast"
                       />
@@ -77,7 +66,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js" integrity="sha512-vyRAVI0IEm6LI/fVSv/Wq/d0KUfrg3hJq2Qz5FlfER69sf3ZHlOrsLriNm49FxnpUGmhx+TaJKwJ+ByTLKT+Yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js" integrity="sha512-yBpuflZmP5lwMzZ03hiCLzA94N0K2vgBtJgqQ2E1meJzmIBfjbb7k4Y23k2i2c/rIeSUGc7jojyIY5waK3ZxCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"
+      integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
+      crossorigin="anonymous"
+    ></script>
+    <script 
+      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/utc.min.js" 
+      integrity="sha512-m00bfmYnAl3plEBlQfeQUhw/U2uvmw29V2+jxSWpAjankMWS+zAsjezbKWDEJNXqWq9o9qQZSOiA2RKDpa4D5w==" 
+      crossorigin="anonymous"
+    ></script>
+    <script 
+      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/timezone.min.js" 
+      integrity="sha512-pslqxxHAYPCxaSeFSmXXxDkLejD5dbFVC66aiVq0z4v7VTJBU+wqcG1OpNh4p3MjS2D6NCwz/H2QmSc7dXxryg==" 
+      crossorigin="anonymous"
+    ></script>
+  
     <script src="./assets/script.js"></script> 
 </body>
 </html>

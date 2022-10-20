@@ -4,11 +4,14 @@ let searchHistory=[];
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
 const today = document.querySelector("#today");
-const forecast = document.querySelector("#forecast");
+const forecastContainer = document.querySelector("#forecast");
 const searchList= document.querySelector("#history");
 const weatherApiRootUrl= "https://api.openweathermap.org";
+dayjs.extend(window.dayjs_plugin_utc);
+dayjs.extend(window.dayjs_plugin_timezone);
 
-//I need to display user input to display city in previously searched
+
+//this function displays the previously searched cities with the use of the search button
 function DisplayHistory(){
     searchList.innerHTML="";
     for (let index = searchHistory.length-1; index >= 0; index--) { // this takes from the end of the array to the begining.
@@ -20,7 +23,7 @@ function DisplayHistory(){
         searchList.append(btn);
     }
 }
-
+//this function is to display the past cities searched
 function appendHistory(search){
     if (searchHistory.indexOf(search)!== -1) {
         return;
@@ -30,7 +33,7 @@ function appendHistory(search){
     DisplayHistory();
     console.log(searchHistory)
 }
-
+// this function is to gather the past search history from local storage
 function getHistory(){
     let storedHistory = localStorage.getItem("search-history");
     if (storedHistory) {
@@ -38,13 +41,13 @@ function getHistory(){
     }
     DisplayHistory();
 }
-
+// this function allows the user to gather and view the current weather for that day by city searched
 function renderCurrentWeather(city, weather){
     let date= moment().format("L");
     let temp= weather.main.temp;
     let wind= weather.wind.speed;
     let humidity= weather.main.humidity;
-    let uvIndex= weather.main.uvi
+    let uvIndex= weather.main.uvi;
     let iconUrl = `http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
     let card=document.createElement("div");
     let body=document.createElement("div");
@@ -76,12 +79,12 @@ function renderCurrentWeather(city, weather){
     today.append(card);
     
 };
-
+//this function is to set the cards for the following 5 day forecast
 function renderForecastCard(forecast){
     let temp= forecast.main.temp;
     let wind= forecast.wind.speed;
     let humidity= forecast.main.humidity;
-    let iconUrl = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
+    let iconUrl = `http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
     let col= document.createElement(`div`);
     let card=document.createElement("div");
     let body=document.createElement("div");
@@ -107,12 +110,12 @@ function renderForecastCard(forecast){
     tempEl.textContent= `Temp: ${temp}°F`;
     windEl.textContent= `Wind: ${wind}mph`;
     humidityEl.textContent= `Humidity: ${humidity}%`;
-    forecast.append(col);
+    forecastContainer.append(col);
 };
-
+//this function pulls and displays the next 5 day forecast
 function renderForecast(dailyForecast){
-    let start= moment().add(1, "days").calendar();
-    let end = moment().add(6,"days").calendar();
+    let start = dayjs().add(1, "day").startOf("day").unix();
+    let end = dayjs().add(6, "day").startOf("day").unix();
     console.log(start);
     console.log(end);
     let headingCol = document.createElement("div");
@@ -120,22 +123,29 @@ function renderForecast(dailyForecast){
     headingCol.setAttribute("class", "col-12");
     heading.textContent= "Upcoming 5 Days:";
     headingCol.append(heading);
-    forecast.innerHTML="";
-    forecast.append(headingCol);
+    forecastContainer.innerHTML="";
+    forecastContainer.append(headingCol);
+
+    console.log(dailyForecast);
 
     for (let i = 0; i < dailyForecast.length; i++) {
         if (dailyForecast[i].dt>=start && dailyForecast[i].dt<end){
-            // if (dailyForecast[i].dt_txt.slice(11,13)=="12"){
+            if (dailyForecast[i].dt_txt.slice(11,13)=="12"){
                 renderForecastCard(dailyForecast[i]);
-            // }
+                console.log(dailyForecast[i].dt)
+            }
         
         }
     }
 };
+
+//this function renders the items of current weather and 5 day forecast
 function renderItems(city, data) {
-    renderCurrentWeather(city, data.list[0]);
+    renderCurrentWeather(city, data.list[0], data.city.timezone);
     renderForecast(data.list);
 }
+
+// this fetches the weather based on lat and long then converts to city while fetching the api
 function fetchWeather(location) {
     var { lat } = location;
     var { lon } = location;
@@ -154,6 +164,7 @@ function fetchWeather(location) {
         console.error(err);
       });
 }
+
 function fetchCoords(search) {
     var apiUrl = `${weatherApiRootUrl}/geo/1.0/direct?q=${search}&limit=5&appid=${WeatherApiKey}`;
   
@@ -174,9 +185,6 @@ function fetchCoords(search) {
       });
   }
 
-// function cityDisplay(){
-//     fetch(``)
-// }
 
 function handleSearchFormSubmit(e) {
     // Don't continue if there is nothing in the search form
